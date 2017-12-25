@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GameAnimator : MonoBehaviour {
 
-    private Animator animator;
+    public AudioClip audioClip;
 
+    private Animator animator;
+    private AudioSource audioSource;
 	void Start ()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayAnimator()
@@ -19,5 +22,7 @@ public class GameAnimator : MonoBehaviour {
     public void PlayBgAnimator()
     {
         animator.Play("AnimationBG", 0);
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 }
